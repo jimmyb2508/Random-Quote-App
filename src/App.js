@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import QuoteBox from './components/QuoteBox';
 import Button from './components/Button';
+import TwitterShare from './components/TwitterShare';
 import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 import './App.css';
 
@@ -45,20 +44,17 @@ render() {
   return (
     <div id="wrapper">
       <h1 className="title">Random Quote App</h1>
-
-      <div id="quote-box">
+ 
+          <div id="quote-box">
         <QuoteBox quote={quote} author={author} />
 
         <div id="buttons">
-          <a id='tweet-quote' href={`https://twitter.com/intent/tweet?text=${quote} ${author}`} target='_blank' rel="noopener noreferrer" title="Post this quote on twitter!">
-            <span>
-              <FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
-            </span>
-          </a>
+          <TwitterShare quote={quote} author={author} />
           <Button id='new-quote' title='New Quote' onClick={this.getNewQuote} />
         </div>
+
       </div>
-    </div>
+     </div>
     )
   }
 }
