@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
+import QuoteBox from './components/QuoteBox';
+import Button from './components/Button';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+
+import './App.css';
 
 class RandomQuote extends Component {
   constructor(props) {
@@ -30,7 +36,7 @@ class RandomQuote extends Component {
       })
  }
 
- getNewQuote = () => { // will be called on clicking the new quote button
+ getNewQuote = () => {
    this.getQuote()
  }
 
@@ -41,16 +47,15 @@ render() {
       <h1 className="title">Random Quote App</h1>
 
       <div id="quote-box">
-        <div id="text"><p>{quote}</p></div>
-        <div id="author"><h5>{author}</h5></div>
+        <QuoteBox quote={quote} author={author} />
 
         <div id="buttons">
-          <a id="tweet-quote" href={`https://twitter.com/intent/tweet?text=${quote} ${author}`} target='_blank' title="Post this quote on twitter">
+          <a id='tweet-quote' href={`https://twitter.com/intent/tweet?text=${quote} ${author}`} target='_blank' rel="noopener noreferrer" title="Post this quote on twitter!">
             <span>
-              <i className="fab fa-twitter twitter-icon" />
+              <FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
             </span>
           </a>
-        <button id='new-quote' className='button' onClick={this.getNewQuote}>New Quote</button>
+          <Button id='new-quote' title='New Quote' onClick={this.getNewQuote} />
         </div>
       </div>
     </div>
